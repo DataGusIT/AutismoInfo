@@ -6,61 +6,41 @@
     <title>AutismoInfo - Informação e Apoio ao Autismo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true">
     <style>
-        :root {
-            --purple-primary: #6a3ea1;
-            --purple-light: #9d72d3;
-            --purple-dark: #4a2b74;
-            --gray-light: #f5f5f7;
-            --gray-medium: #e0e0e0;
-            --gray-dark: #666666;
-            --white: #ffffff;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--white);
-            color: #333;
-            overflow-x: hidden;
-        }
-
         /* Hero Section */
         .hero {
             padding: 160px 0 100px;
             background: linear-gradient(135deg, rgba(245, 245, 247, 0.9) 0%, rgba(255, 255, 255, 0.9) 100%);
-            position: static;
+            width: 100%; /* Usar 100% em vez de 100vw */
+            position: relative; /* Mudei de static para relative */
             overflow: hidden;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, rgba(106, 62, 161, 0.1), rgba(157, 114, 211, 0.2));
-            z-index: 0;
-        }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, rgba(157, 114, 211, 0.2), rgba(106, 62, 161, 0.1));
-            z-index: 0;
-        }
+        .hero::before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, rgba(106, 62, 161, 0.1), rgba(157, 114, 211, 0.2));
+                z-index: 0;
+            }
+
+            .hero::after {
+                content: '';
+                position: absolute;
+                bottom: -100px;
+                left: -100px;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background: linear-gradient(45deg, rgba(157, 114, 211, 0.2), rgba(106, 62, 161, 0.1));
+                z-index: 0;
+            }
 
         .hero-container {
             display: flex;
@@ -82,11 +62,11 @@
             color: var(--purple-dark);
         }
 
-        .hero-title span {
-            background: linear-gradient(45deg, var(--purple-primary), var(--purple-light));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+            .hero-title span {
+                background: linear-gradient(45deg, var(--purple-primary), var(--purple-light));
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
 
         .hero-subtitle {
             font-size: 20px;
@@ -109,9 +89,9 @@
             transition: all 0.5s;
         }
 
-        .hero-img:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
+            .hero-img:hover {
+                transform: perspective(1000px) rotateY(0deg);
+            }
 
         .hero-stats {
             display: flex;
@@ -129,10 +109,10 @@
             transition: all 0.3s;
         }
 
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
+            .stat-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
 
         .stat-number {
             font-size: 28px;
@@ -146,6 +126,30 @@
             font-size: 14px;
             font-weight: 500;
         }
+
+        /* Botão "Comece Agora" */
+        .btn-comece-agora {
+            background-color: #6a3ea1; /* Cor roxa */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid #6a3ea1;
+            box-shadow: 0 4px 15px rgba(106, 62, 161, 0.2);
+            text-align: center;
+        }
+
+            .btn-comece-agora:hover {
+                background-color: #55358b; /* Cor roxa escura */
+                color: white; /* Texto permanece branco */
+                transform: translateY(-3px); /* Leve elevação */
+                box-shadow: 0 6px 20px rgba(106, 62, 161, 0.3);
+                border-color: #55358b; /* Cor da borda também fica mais escura */
+            }
+
 
         /* Sobre nós */
         .about {
@@ -226,10 +230,10 @@
             text-align: center;
         }
 
-        .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-        }
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            }
 
         .feature-icon {
             font-size: 40px;
@@ -296,15 +300,14 @@
             height: 100%;
         }
 
-        .testimonial::before {
-            content: """;
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 60px;
-            color: rgba(106, 62, 161, 0.1);
-            font-family: Georgia, serif;
-        }
+            .testimonial::before {
+                content: """; position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 60px;
+                color: rgba(106, 62, 161, 0.1);
+                font-family: Georgia, serif;
+            }
 
         .testimonial-text {
             font-size: 16px;
@@ -360,11 +363,11 @@
             transition: all 0.3s;
         }
 
-        .dot.active {
-            background-color: var(--purple-primary);
-            width: 25px;
-            border-radius: 10px;
-        }
+            .dot.active {
+                background-color: var(--purple-primary);
+                width: 25px;
+                border-radius: 10px;
+            }
 
         /* FAQ */
         .faq {
@@ -386,9 +389,9 @@
             transition: all 0.3s;
         }
 
-        .faq-item:hover {
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+            .faq-item:hover {
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
 
         .faq-question {
             padding: 20px;
@@ -401,9 +404,9 @@
             font-size: 18px;
         }
 
-        .faq-question i {
-            transition: all 0.3s;
-        }
+            .faq-question i {
+                transition: all 0.3s;
+            }
 
         .faq-answer {
             padding: 0 20px;
@@ -438,29 +441,29 @@
             overflow: hidden;
         }
 
-        .cta::before {
-            content: '';
-            position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            z-index: 0;
-        }
+            .cta::before {
+                content: '';
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.05);
+                z-index: 0;
+            }
 
-        .cta::after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            left: -100px;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.05);
-            z-index: 0;
-        }
+            .cta::after {
+                content: '';
+                position: absolute;
+                bottom: -100px;
+                left: -100px;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.05);
+                z-index: 0;
+            }
 
         .cta-content {
             position: relative;
@@ -509,11 +512,138 @@
             transition: all 0.3s;
         }
 
-        .cta-button:hover {
-            background-color: var(--gray-light);
+            .cta-button:hover {
+                background-color: var(--gray-light);
+            }
+
+        /* Footer */
+        .footer {
+            background-color: var(--white);
+            padding: 80px 0 30px;
         }
 
-       
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+        }
+
+        .footer-logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--purple-primary);
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .footer-about {
+            margin-bottom: 20px;
+            line-height: 1.7;
+            color: var(--gray-dark);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--gray-light);
+            border-radius: 50%;
+            color: var(--purple-primary);
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+
+            .social-link:hover {
+                background-color: var(--purple-primary);
+                color: var(--white);
+                transform: translateY(-3px);
+            }
+
+        .footer-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--purple-dark);
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+            .footer-links li {
+                margin-bottom: 12px;
+            }
+
+            .footer-links a {
+                color: var(--gray-dark);
+                text-decoration: none;
+                transition: all 0.3s;
+                display: inline-block;
+            }
+
+                .footer-links a:hover {
+                    color: var(--purple-primary);
+                    transform: translateX(5px);
+                }
+
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--gray-dark);
+        }
+
+            .footer-contact i {
+                margin-right: 10px;
+                color: var(--purple-primary);
+            }
+
+        .copyright {
+            text-align: center;
+            padding-top: 50px;
+            color: var(--gray-dark);
+            border-top: 1px solid var(--gray-medium);
+            margin-top: 50px;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--purple-primary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(106, 62, 161, 0.3);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(20px);
+            z-index: 999;
+        }
+
+            .back-to-top.visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .back-to-top:hover {
+                background-color: var(--purple-dark);
+                transform: translateY(-5px);
+            }
+
+
 
         /* Media Queries */
         @@media (max-width: 1024px) {
@@ -599,7 +729,24 @@
             .footer-container {
                 grid-template-columns: 1fr;
             }
+        }   
+        .hero, .about, .features, .testimonials, .faq, .cta, .footer {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
         }
+
+        @@media (max-width: 1200px) {
+    .container {
+        padding: 0 10px;
+    }
+}
+@@media (max-width: 768px) {
+    .container {
+        padding: 0 5px;
+    }
+}
     </style>
 </head>
 <body>
@@ -611,7 +758,7 @@
                     <h1 class="hero-title">Informação e apoio para um mundo <span>mais inclusivo</span></h1>
                     <p class="hero-subtitle">O AutismoInfo é uma plataforma dedicada a fornecer informações precisas e apoio para pessoas autistas, familiares, educadores e profissionais da saúde.</p>
                     <div class="hero-buttons">
-                        <a href="#" class="btn">Comece Agora</a>
+                        <a href="#" class="btn btn-comece-agora">Comece Agora</a>
                         <a href="#about" class="btn btn-outline" style="margin-left: 15px">Saiba Mais</a>
                     </div>
                     <div class="hero-stats">
@@ -663,48 +810,52 @@
             <h2 class="section-title" data-aos="fade-up">Nossos Recursos</h2>
             <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">Oferecemos uma variedade de ferramentas para informar, apoiar e conectar pessoas interessadas no tema do autismo.</p>
 
-            <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-book-open feature-icon"></i>
-                    <h3 class="feature-title">Conteúdos Educativos</h3>
-                    <p class="feature-text">Artigos, guias e vídeos explicativos sobre o autismo, desenvolvidos por especialistas e revisados para garantir precisão e relevância.</p>
-                </div>
-
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-users feature-icon"></i>
-                    <h3 class="feature-title">Comunidade de Apoio</h3>
-                    <p class="feature-text">Espaço seguro para troca de experiências, dúvidas e suporte mútuo entre familiares, profissionais e pessoas autistas, moderado por especialistas.</p>
-                </div>
-
-                <p class="feature-text">Espaço seguro para troca de experiências, dúvidas e suporte mútuo entre familiares, profissionais e pessoas autistas, moderado por especialistas.</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-map-marker-alt feature-icon"></i>
-                <h3 class="feature-title">Localizador de Serviços</h3>
-                <p class="feature-text">Encontre profissionais especializados, instituições de apoio e serviços de atendimento para pessoas autistas em sua região.</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
-                <i class="fas fa-calendar-alt feature-icon"></i>
-                <h3 class="feature-title">Eventos e Workshops</h3>
-                <p class="feature-text">Calendário atualizado com eventos, palestras, cursos e workshops sobre autismo, tanto presenciais quanto online.</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
-                <i class="fas fa-tools feature-icon"></i>
-                <h3 class="feature-title">Ferramentas Práticas</h3>
-                <p class="feature-text">Recursos para o dia a dia, como agendas visuais, checklists, aplicativos recomendados e materiais para download.</p>
-            </div>
-
-            <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
-                <i class="fas fa-comments feature-icon"></i>
-                <h3 class="feature-title">Consultoria Online</h3>
-                <p class="feature-text">Agende consultas virtuais com especialistas de diversas áreas para obter orientações personalizadas para sua situação.</p>
-            </div>
+            <div class="features">
+    <div class="features-grid">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-book-open feature-icon"></i>
+            <h3 class="feature-title">Conteúdos Educativos</h3>
+            <p class="feature-text">Artigos, guias e vídeos explicativos sobre o autismo, desenvolvidos por especialistas e revisados para garantir precisão e relevância.</p>
         </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-users feature-icon"></i>
+            <h3 class="feature-title">Comunidade de Apoio</h3>
+            <p class="feature-text">Espaço seguro para troca de experiências, dúvidas e suporte mútuo entre familiares, profissionais e pessoas autistas, moderado por especialistas.</p>
         </div>
-    </section>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-comments feature-icon"></i>
+            <h3 class="feature-title">Outro Recurso</h3>
+            <p class="feature-text">Espaço seguro para troca de experiências, dúvidas e suporte mútuo entre familiares, profissionais e pessoas autistas, moderado por especialistas.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+            <i class="fas fa-map-marker-alt feature-icon"></i>
+            <h3 class="feature-title">Localizador de Serviços</h3>
+            <p class="feature-text">Encontre profissionais especializados, instituições de apoio e serviços de atendimento para pessoas autistas em sua região.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+            <i class="fas fa-calendar-alt feature-icon"></i>
+            <h3 class="feature-title">Eventos e Workshops</h3>
+            <p class="feature-text">Calendário atualizado com eventos, palestras, cursos e workshops sobre autismo, tanto presenciais quanto online.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+            <i class="fas fa-tools feature-icon"></i>
+            <h3 class="feature-title">Ferramentas Práticas</h3>
+            <p class="feature-text">Recursos para o dia a dia, como agendas visuais, checklists, aplicativos recomendados e materiais para download.</p>
+        </div>
+
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="700">
+            <i class="fas fa-comments feature-icon"></i>
+            <h3 class="feature-title">Consultoria Online</h3>
+            <p class="feature-text">Agende consultas virtuais com especialistas de diversas áreas para obter orientações personalizadas para sua situação.</p>
+        </div>
+    </div>
+</div>
+</section>
 
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
@@ -834,116 +985,77 @@
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <a href="#" class="footer-logo">
+                        <i class="fas fa-infinity"></i> AutismoInfo
+                    </a>
+                    <p class="footer-about">Uma plataforma dedicada a fornecer informações precisas e apoio para pessoas autistas, familiares, educadores e profissionais da saúde.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre Nós</a></li>
+                        <li><a href="#features">Recursos</a></li>
+                        <li><a href="#testimonials">Depoimentos</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Artigos</a></li>
+                        <li><a href="#">E-books Gratuitos</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Comunidade</a></li>
+                        <li><a href="#">Consultoria</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-column">
+                    <h3 class="footer-title">Contato</h3>
+                    <div class="footer-contact">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Av. Paulista, 1000 - São Paulo, SP</span>
+                    </div>
+                    <div class="footer-contact">
+                        <i class="fas fa-phone"></i>
+                        <span>(11) 99999-9999</span>
+                    </div>
+                    <div class="footer-contact">
+                        <i class="fas fa-envelope"></i>
+                        <span>contato@autismoinfo.com.br</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 AutismoInfo. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
     <!-- Back to Top Button -->
     <a href="#" class="back-to-top">
         <i class="fas fa-arrow-up"></i>
     </a>
 
+
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script>
-        // Initialize AOS
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            // Back to top button visibility
-            const backToTop = document.querySelector('.back-to-top');
-            if (window.scrollY > 300) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
-            }
-        });
-
-        // Mobile menu toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        mobileMenuBtn.addEventListener('click', function() {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-
-        // FAQ toggle
-        const faqItems = document.querySelectorAll('.faq-item');
-
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-
-            question.addEventListener('click', () => {
-                // Close all other items
-                faqItems.forEach(otherItem => {
-                    if (otherItem !== item) {
-                        otherItem.classList.remove('active');
-                    }
-                });
-
-                // Toggle current item
-                item.classList.toggle('active');
-            });
-        });
-
-        // Testimonial slider
-        const track = document.querySelector('.testimonial-track');
-        const dots = document.querySelectorAll('.dot');
-        const cards = document.querySelectorAll('.testimonial-card');
-        let currentSlide = 0;
-
-        function updateSlider() {
-            const cardWidth = cards[0].offsetWidth;
-            track.style.transform = `translateX(-${currentSlide * cardWidth}px)`;
-
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
-        }
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateSlider();
-            });
-        });
-
-        // Auto slide every 5 seconds
-        setInterval(() => {
-            currentSlide = (currentSlide + 1) % cards.length;
-            updateSlider();
-        }, 5000);
-
-        // Handle window resize for testimonial slider
-        window.addEventListener('resize', updateSlider);
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-
-                    // Close mobile menu if open
-                    if (window.innerWidth < 768) {
-                        navLinks.style.display = 'none';
-                    }
-                }
-            });
-        });
-    </script>
+    <script src="~/js/site.js"></script>
+   
 </body>
 </html>

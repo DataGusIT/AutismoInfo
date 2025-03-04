@@ -166,3 +166,4 @@ C:\Users\gusta\source\repos\AutismoInfo\AutismoInfo\obj\Debug\net8.0\refint\Auti
 C:\Users\gusta\source\repos\AutismoInfo\AutismoInfo\obj\Debug\net8.0\AutismoInfo.pdb
 C:\Users\gusta\source\repos\AutismoInfo\AutismoInfo\obj\Debug\net8.0\AutismoInfo.genruntimeconfig.cache
 C:\Users\gusta\source\repos\AutismoInfo\AutismoInfo\obj\Debug\net8.0\ref\AutismoInfo.dll
+C:\Users\gusta\source\repos\AutismoInfo\AutismoInfo\obj\Debug\net8.0\AutismoInfo.sourcelink.json
