@@ -1,0 +1,67 @@
+﻿@model List<AutismoInfo.Models.CategoriaRecursoViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Recursos";
+}
+
+<div class="container">
+    <h1 class="my-4">Recursos sobre Autismo</h1>
+    <p class="lead mb-4">
+        Aqui você encontrará diversos materiais informativos e de apoio para compreensão e suporte ao Transtorno do Espectro Autista (TEA).
+        Nosso objetivo é disponibilizar conteúdo de qualidade para familiares, profissionais e pessoas autistas.
+    </p>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Buscar recursos</h5>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Digite palavras-chave...">
+                        <div class="input-group-append">
+                            <button class="btn btn-primary" type="button">Buscar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @foreach (var categoria in Model)
+    {
+        <div class="card mb-4">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0">@categoria.Nome</h2>
+            </div>
+            <div class="card-body">
+                <p class="card-text mb-3">@categoria.Descricao</p>
+
+                <div class="list-group">
+                    @foreach (var recurso in categoria.Recursos)
+                    {
+                        <div class="list-group-item list-group-item-action flex-column align-items-start">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">@recurso.Titulo</h5>
+                                <small>@recurso.DataPublicacao</small>
+                            </div>
+                            <p class="mb-1">@recurso.Descricao</p>
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <small>
+                                    <span class="badge badge-primary">@recurso.TipoArquivo</span>
+                                    <span class="badge badge-secondary">@recurso.Tamanho</span>
+                                </small>
+                                <div>
+                                    <a asp-action="Detalhes" asp-route-id="@recurso.Id" class="btn btn-sm btn-outline-primary">Ver detalhes</a>
+                                    <a href="@recurso.Url" class="btn btn-sm btn-success" target="_blank">
+                                        <i class="fas fa-download"></i> Download
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>

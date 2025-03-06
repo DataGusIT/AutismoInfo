@@ -1,0 +1,168 @@
+﻿@model List<AutismoInfo.Models.Contatos.CategoriaContatoViewModel>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = "Contatos";
+}
+
+<div class="container">
+    <h1 class="my-4">Contatos e Centros de Apoio</h1>
+    <p class="lead mb-4">
+        Aqui você encontrará informações de contato de clínicas, ONGs e centros de apoio especializados em autismo.
+        Estas instituições oferecem serviços de diagnóstico, terapias, suporte familiar e muito mais.
+    </p>
+
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="card-title">Filtrar por localização</h5>
+                            <div class="input-group mb-3">
+                                <select class="form-control" id="estadoFiltro">
+                                    <option value="">Todos os estados</option>
+                                    <option value="SP">São Paulo</option>
+                                    <option value="RJ">Rio de Janeiro</option>
+                                    <option value="MG">Minas Gerais</option>
+                                    <option value="BA">Bahia</option>
+                                    <option value="DF">Distrito Federal</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button">Filtrar</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="card-title">Buscar</h5>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="searchContatos" placeholder="Digite palavras-chave...">
+                                <div class="input-group-append">
+                                    <button class="btn btn-primary" type="button">Buscar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @foreach (var categoria in Model)
+    {
+        <div class="card mb-4 categoria-card">
+            <div class="card-header bg-primary text-white">
+                <h2 class="h4 mb-0">@categoria.Nome</h2>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    @foreach (var contato in categoria.Contatos)
+                    {
+                        <div class="col-md-6 mb-4 contato-item" data-estado="@contato.Estado">
+                            <div class="card h-100 shadow-sm">
+                                <div class="card-body">
+                                    <h3 class="h5 card-title">@contato.Nome</h3>
+                                    <p class="card-text mb-3">@contato.Descricao</p>
+
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-map-marker-alt text-danger mr-2"></i>
+                                        <span>@contato.Endereco, @contato.Cidade - @contato.Estado</span>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-phone text-primary mr-2"></i>
+                                        <span>@contato.Telefone</span>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-envelope text-primary mr-2"></i>
+                                        <span>@contato.Email</span>
+                                    </div>
+
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-clock text-secondary mr-2"></i>
+                                        <span>@contato.HorarioAtendimento</span>
+                                    </div>
+
+                                    <div class="mt-3">
+                                        <a asp-action="Detalhes" asp-route-id="@contato.Id" class="btn btn-outline-primary">
+                                            <i class="fas fa-info-circle mr-1"></i> Mais informações
+                                        </a>
+
+                                        @if (!string.IsNullOrEmpty(contato.Website))
+                                        {
+                                            <a href="@contato.Website" target="_blank" class="btn btn-outline-success ml-2">
+                                                <i class="fas fa-globe mr-1"></i> Website
+                                            </a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="card mt-5 mb-5">
+        <div class="card-header bg-info text-white">
+            <h3 class="h4 mb-0">Sugerir uma instituição</h3>
+        </div>
+        <div class="card-body">
+            <p>Conhece alguma instituição de apoio ao autismo que não está em nossa lista? Compartilhe conosco:</p>
+            <a href="#" class="btn btn-info">
+                <i class="fas fa-plus-circle mr-2"></i>Sugerir instituição
+            </a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            // Filtro por estado
+            $("#estadoFiltro").change(function() {
+                var estado = $(this).val();
+
+                if (estado === "") {
+                    $(".contato-item").show();
+                } else {
+                    $(".contato-item").hide();
+                    $(".contato-item[data-estado='" + estado + "']").show();
+                }
+
+                // Verifica se há itens visíveis em cada categoria
+                $(".categoria-card").each(function() {
+                    var visibleItems = $(this).find(".contato-item:visible").length;
+                    if (visibleItems === 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+
+            // Busca por palavras-chave
+            $("#searchContatos").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+
+                $(".contato-item").each(function() {
+                    var text = $(this).text().toLowerCase();
+                    var match = text.indexOf(value) > -1;
+                    $(this).toggle(match);
+                });
+
+                // Verifica se há itens visíveis em cada categoria
+                $(".categoria-card").each(function() {
+                    var visibleItems = $(this).find(".contato-item:visible").length;
+                    if (visibleItems === 0) {
+                        $(this).hide();
+                    } else {
+                        $(this).show();
+                    }
+                });
+            });
+        });
+    </script>
+}

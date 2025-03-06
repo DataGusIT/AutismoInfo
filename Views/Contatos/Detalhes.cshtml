@@ -1,0 +1,107 @@
+﻿@model AutismoInfo.Models.Contatos.ContatosViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["Title"] = Model.Nome;
+}
+
+<div class="container">
+    <div class="mb-4">
+        <a asp-action="Index" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left"></i> Voltar para Contatos
+        </a>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <h1 class="h3 mb-0">@Model.Nome</h1>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="mb-3">Informações de Contato</h4>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-map-marker-alt text-danger fa-2x mr-3"></i>
+                        <div>
+                            <strong>Endereço:</strong><br>
+                            @Model.Endereco<br>
+                            @Model.Cidade - @Model.Estado
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-phone text-primary fa-2x mr-3"></i>
+                        <div>
+                            <strong>Telefone:</strong><br>
+                            @Model.Telefone
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-envelope text-primary fa-2x mr-3"></i>
+                        <div>
+                            <strong>Email:</strong><br>
+                            <a href="mailto:@Model.Email">@Model.Email</a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-globe text-success fa-2x mr-3"></i>
+                        <div>
+                            <strong>Website:</strong><br>
+                            <a href="@Model.Website" target="_blank">@Model.Website</a>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="fas fa-clock text-secondary fa-2x mr-3"></i>
+                        <div>
+                            <strong>Horário de Atendimento:</strong><br>
+                            @Model.HorarioAtendimento
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <h4 class="mb-3">Sobre</h4>
+                    <p>@Model.Descricao</p>
+
+                    <h4 class="mb-3 mt-4">Serviços Oferecidos</h4>
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            @foreach (var servico in Model.Servicos.Split(','))
+                            {
+                                <span class="badge badge-primary p-2 m-1">@servico.Trim()</span>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h4 class="mb-3">Localização</h4>
+                <div id="map" style="height: 400px;" class="border rounded"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://maps.googleapis.com/maps/api/js?key=INSIRA_SUA_CHAVE_API_GOOGLE_MAPS&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            var location = { lat: @Model.Latitude, lng: @Model.Longitude };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 15,
+                center: location
+            });
+
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: '@Model.Nome'
+            });
+        }
+    </script>
+}
