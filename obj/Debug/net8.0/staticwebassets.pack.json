@@ -5,6 +5,30 @@
       "PackagePath": "staticwebassets\\AutismoInfo.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\Images\\img01.jpeg",
+      "PackagePath": "staticwebassets\\Images\\img01.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\Images\\img02.jpeg",
+      "PackagePath": "staticwebassets\\Images\\img02.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\Images\\img03.jpeg",
+      "PackagePath": "staticwebassets\\Images\\img03.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\Images\\img04.png",
+      "PackagePath": "staticwebassets\\Images\\img04.png"
+    },
+    {
+      "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\Images\\img05.jpeg",
+      "PackagePath": "staticwebassets\\Images\\img05.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\Images\\img06.jpeg",
+      "PackagePath": "staticwebassets\\Images\\img06.jpeg"
+    },
+    {
       "Id": "C:\\Users\\gusta\\source\\repos\\AutismoInfo\\AutismoInfo\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
